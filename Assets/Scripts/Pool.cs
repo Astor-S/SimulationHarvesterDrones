@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 public class Pool<T>
 {
-    private Stack<T> _objects = new Stack<T>();
-
-    private Func<T> _createFunc;
+    private readonly Stack<T> _objects = new();
+    private readonly Func<T> _createFunc;
 
     public Pool(Func<T> createFunc)
     {
