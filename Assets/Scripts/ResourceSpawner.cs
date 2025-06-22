@@ -10,16 +10,27 @@ public class ResourceSpawner : Spawner<Resource>
     private WaitForSeconds _waitStartDelay;
     private WaitForSeconds _waitRepeatRate;
 
+    public float RepeatRate { get; private set; } = 1f;
+
     protected override void Awake()
     {
         base.Awake();
         _waitStartDelay = new WaitForSeconds(_startDelay);
-        _waitRepeatRate = new WaitForSeconds(_repeatRate);
+        UpdateRepeatRate(_repeatRate);
     }
 
     private void Start()
     {
         StartCoroutine(SpawnCoroutine());
+    }
+
+    public void UpdateRepeatRate(float newRate)
+    {
+        if (newRate > 0)
+        {
+            RepeatRate = newRate;
+            _waitRepeatRate = new WaitForSeconds(RepeatRate);
+        }
     }
 
     protected override void OnSpawn(Resource obj)
@@ -41,7 +52,8 @@ public class ResourceSpawner : Spawner<Resource>
         while (enabled)
         {
             SpawnAtRandomPoint();
-            yield return _waitRepeatRate;
+            _waitRepeatRate = new WaitForSeconds(RepeatRate);
+            yield return _waitRepeatRate; 
         }
     }
 
