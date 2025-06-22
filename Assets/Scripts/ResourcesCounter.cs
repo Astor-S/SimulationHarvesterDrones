@@ -17,8 +17,6 @@ public class ResourcesCounter : MonoBehaviour
         _base.ResourceCountChanged -= UpdateResourceCount;
     }
 
-    private void UpdateResourceCount()
-    {
+    private void UpdateResourceCount() =>
         _resourcesCountText.text = _base.ResourceCount.ToString();
-    }
 }
