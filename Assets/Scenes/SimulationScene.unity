@@ -2763,6 +2763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _droneCountSlider: {fileID: 2086530950}
+  _speedSlider: {fileID: 919256566}
   _spawnerDrones: {fileID: 803075058}
   _minDrones: 1
   _maxDrones: 5
@@ -3149,6 +3150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _droneCountSlider: {fileID: 2086530950}
+  _speedSlider: {fileID: 919256566}
   _spawnerDrones: {fileID: 1639244660}
   _minDrones: 1
   _maxDrones: 5

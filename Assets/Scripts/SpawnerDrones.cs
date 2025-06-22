@@ -12,7 +12,7 @@ public class SpawnerDrones : Spawner<Drone>
     public event Action<Mover> DroneSpawned;
     public event Action<Mover> DroneDestroyed;
 
-    public Drone SpawnDrone()
+    public Drone SpawnDrone(float speed)
     {
         Drone drone = Spawn(_spawnPoint.position); 
         
@@ -20,6 +20,8 @@ public class SpawnerDrones : Spawner<Drone>
         {
             _activeDrones.Add(drone);
             _base.AddDrone(drone);
+            Mover mover = drone.GetComponent<Mover>();
+            mover.Speed = speed;
             DroneSpawned?.Invoke(drone.GetComponent<Mover>());
         }
 

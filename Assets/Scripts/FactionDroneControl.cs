@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class FactionDroneControl : MonoBehaviour
 {
     [SerializeField] private Slider _droneCountSlider;
+    [SerializeField] private SpeedSlider _speedSlider;
     [SerializeField] private SpawnerDrones _spawnerDrones;
     [SerializeField] private int _minDrones = 1;
     [SerializeField] private int _maxDrones = 5;
@@ -29,7 +30,7 @@ public class FactionDroneControl : MonoBehaviour
 
         while (currentActiveDroneCount < targetDroneCount)
         {
-            _spawnerDrones.SpawnDrone();
+            _spawnerDrones.SpawnDrone(_speedSlider.Speed);
             currentActiveDroneCount++;
         }
 
