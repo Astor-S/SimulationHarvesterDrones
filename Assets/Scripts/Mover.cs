@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,6 +8,21 @@ public class Mover : MonoBehaviour
 
     private Transform _targetTransform;
     private Coroutine _moveCoroutine;
+
+    public event Action<float> SpeedChanged;
+
+    public float Speed
+    {
+        get => _speed;
+        set
+        {
+            if (_speed != value)
+            {
+                _speed = value;
+                SpeedChanged?.Invoke(_speed);
+            }
+        }
+    }
 
     public void MoveTo(Transform target)
     {
