@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BaseService : MonoBehaviour
+public class ResourceDatabaseInitializator : MonoBehaviour
 {
     private readonly ResourcesDatabase _resourcesDatabase = new();
 
