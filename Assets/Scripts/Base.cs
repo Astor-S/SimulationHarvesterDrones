@@ -74,12 +74,36 @@ public class Base : MonoBehaviour
     {
         if (_availableResources.Count > 0)
         {
-            Resource resource = _availableResources[0];
-            _resourcesDatabase.ReserveResources(resource);
-            drone.SendToResource(resource, drone);
-            _availableResources.RemoveAt(0);
-            drone.ResourceDelivered += OnResourceDelivered;
+            Resource nearestResource = FindNearestResource(drone.transform.position);
+
+            if (nearestResource != null)
+            {
+                _resourcesDatabase.ReserveResources(nearestResource);
+                drone.SendToResource(nearestResource, drone);
+                _availableResources.Remove(nearestResource);
+                drone.ResourceDelivered += OnResourceDelivered;
+            }
         }
+    }
+
+    private Resource FindNearestResource(Vector3 dronePosition)
+    {
+        Resource nearestResource = null;
+        
+        float minDistance = Mathf.Infinity;
+
+        foreach (Resource resource in _availableResources)
+        {
+            float distance = Vector3.Distance(dronePosition, resource.transform.position);
+            
+            if (distance < minDistance)
+            {
+                nearestResource = resource;
+                minDistance = distance;
+            }
+        }
+
+        return nearestResource;
     }
 
     private Drone GetFreeDrone() =>
