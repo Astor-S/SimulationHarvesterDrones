@@ -17,7 +17,6 @@ public class DroneAvoidance : MonoBehaviour
         {
             Vector3 hitNormal = hit.normal;
             _avoidanceDirection = Vector3.Cross(transform.up, hitNormal).normalized * _avoidanceForce;
-            Debug.DrawRay(transform.position, _avoidanceDirection * _scanDistance, Color.red);
         }
     }
 
