@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7529096584854338188}
   - component: {fileID: 2546554838458854635}
   - component: {fileID: 3377416961874193560}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ResourceView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7722120429049336323}
   - component: {fileID: 3454584516473170072}
   - component: {fileID: -6162233002092957290}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Resource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
