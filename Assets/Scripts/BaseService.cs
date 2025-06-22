@@ -6,11 +6,10 @@ public class BaseService : MonoBehaviour
 
     [SerializeField] private Base _blueBase;
     [SerializeField] private Base _redBase;
-    [SerializeField] private SpawnerDrones _spawnerDrones;
 
     private void Start()
     {
-        _blueBase.Initialize(_resourcesDatabase, _spawnerDrones);
-        _redBase.Initialize(_resourcesDatabase, _spawnerDrones);
+        _blueBase.Initialize(_resourcesDatabase);
+        _redBase.Initialize(_resourcesDatabase);
     }
 }

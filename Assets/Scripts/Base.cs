@@ -7,10 +7,10 @@ using UnityEngine;
 public class Base : MonoBehaviour
 {
     [SerializeField] private Scanner _scanner;
+    [SerializeField] private SpawnerDrones _spawnerDrones;
     [SerializeField] private List<Drone> _drones;
     [SerializeField] private float _scanDelayTime = 1f;
 
-    private SpawnerDrones _spawnerDrones;
     private ResourcesDatabase _resourcesDatabase;
     private WaitForSeconds _scanDelay;
     private List<Resource> _availableResources = new();
@@ -31,11 +31,14 @@ public class Base : MonoBehaviour
         StartCoroutine(Working());
     }
 
-    public void Initialize(ResourcesDatabase resourcesDatabase, SpawnerDrones spawnerDrones)
-    {
+    public void Initialize(ResourcesDatabase resourcesDatabase) =>
         _resourcesDatabase = resourcesDatabase;
-        _spawnerDrones = spawnerDrones;
-    }
+
+    public void AddDrone(Drone drone) =>
+       _drones.Add(drone);
+
+    public void RemoveDrone(Drone droneToRemove) =>
+       _drones.Remove(droneToRemove);
 
     private void OnResourceDelivered(Resource resource, Drone drone)
     {
