@@ -136,12 +136,12 @@ GameObject:
   - component: {fileID: 530458576}
   - component: {fileID: 530458575}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &530458575
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -465,13 +465,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13398618, y: 0, z: 0, w: 0.9909832}
-  m_LocalPosition: {x: 0, y: 21, z: -53.5}
+  m_LocalRotation: {x: 0.09474254, y: 0.700731, z: -0.09474254, w: 0.700731}
+  m_LocalPosition: {x: -46.2, y: 21, z: 1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 15.4, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15.4, y: 90, z: 0}
 --- !u!1001 &1639244659
 PrefabInstance:
   m_ObjectHideFlags: 0
