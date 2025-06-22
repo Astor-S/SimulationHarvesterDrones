@@ -8,6 +8,8 @@ public class Drone : MonoBehaviour
     [SerializeField] private Picker _picker;
     [SerializeField] private Base _base;
 
+    [SerializeField] private float _collectDelay = 2f;
+
     private bool _isBusy = false;
 
     public bool IsBusy => _isBusy;
@@ -28,6 +30,8 @@ public class Drone : MonoBehaviour
     {
         yield return new WaitUntil(() =>
             (transform.position - resource.transform.position).sqrMagnitude <= _picker.PickUpDistance);
+
+        yield return new WaitForSeconds(_collectDelay);
 
         _picker.PickUp(resource);
         _mover.MoveTo(_base.transform);
