@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] private float _speed = 2f;
+    [SerializeField] private DroneAvoidance _droneAvoidance;
+    [SerializeField] private float _speed = 1f;
 
     private Transform _targetTransform;
     private Coroutine _moveCoroutine;
@@ -38,8 +39,12 @@ public class Mover : MonoBehaviour
     {
         while (_targetTransform != null)
         {
-            transform.position = Vector3.MoveTowards(
-                 transform.position, _targetTransform.position, _speed * Time.deltaTime);
+            Vector3 avoidanceDirection = _droneAvoidance.GetAvoidanceDirection();
+            Vector3 targetPosition = _targetTransform.position;
+            Vector3 directionToTarget = (targetPosition - transform.position).normalized;
+            Vector3 finalDirection = (directionToTarget + avoidanceDirection).normalized;
+
+            transform.position = Vector3.MoveTowards(transform.position, transform.position + finalDirection, _speed * Time.deltaTime);
 
             yield return null;
         }
